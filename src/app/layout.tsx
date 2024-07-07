@@ -16,7 +16,7 @@ const roboto_mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Animated Counter | Sushan",
+  title: "Animated Counter",
   description: "Animated counter animation using framer-motion",
 };
 
