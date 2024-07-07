@@ -19,7 +19,7 @@ export const DigitColumn = ({
   const [scope, animate] = useAnimate();
 
   let animatedValue = useSpring(digit, {
-    stiffness: 300,
+    stiffness: 250,
     damping: 30,
   });
 
