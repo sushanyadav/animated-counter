@@ -1,6 +1,6 @@
 import { useAnimate, useSpring } from "framer-motion";
 import { useEffect } from "react";
-import { useAnimatedCounter } from "./AnimatedCounterProvider";
+import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 import { Digit } from "./Digit";
 
 // TO PREVENT BLUR ANIMATION ON WINDOW LOAD

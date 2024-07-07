@@ -1,5 +1,5 @@
 import { makeFriendly } from "@/functions/makeFriendly";
-import { usePrevious } from "@/hooks/usePrevious.";
+import { usePrevious } from "@/hooks/usePrevious";
 import {
   PropsWithChildren,
   createContext,

@@ -1,7 +1,7 @@
 import { cn } from "@/functions/cn";
 import { isNumeric } from "@/functions/isNumeric";
 import { motion } from "framer-motion";
-import { useAnimatedCounter } from "./AnimatedCounterProvider";
+import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 import { DigitColumn } from "./DigitColumn";
 
 export const Counter = () => {

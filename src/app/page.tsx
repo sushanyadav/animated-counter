@@ -1,6 +1,6 @@
 "use client";
 
-import AnimatedCounterProvider from "@/components/AnimatedCounterProvider";
+import AnimatedCounterProvider from "@/provider/AnimatedCounterProvider";
 import { Counter } from "@/components/Counter";
 
 export default function Home() {
