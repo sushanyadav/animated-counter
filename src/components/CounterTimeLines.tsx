@@ -9,6 +9,20 @@ import {
 } from "framer-motion";
 import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 
+const useAudio = (src: string, { volume = 1, playbackRate = 1 }) => {
+  const audio = useRef(new Audio(src));
+
+  useEffect(() => {
+    audio.current.volume = volume;
+  }, [volume]);
+
+  useEffect(() => {
+    audio.current.playbackRate = playbackRate;
+  }, [playbackRate]);
+
+  return audio.current;
+};
+
 export const CounterTimeLines = () => {
   const currentTickFrontID = useRef<number | null>(null);
   const currentTickBackID = useRef<number | null>(null);
@@ -19,6 +33,7 @@ export const CounterTimeLines = () => {
   const x = useMotionValue(0);
   const { setNumber } = useAnimatedCounter();
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const audio = useAudio("/Tick.mp3", { volume: 1, playbackRate: 1 });
 
   useMotionValueEvent(y, "change", (e) => {
     let newY = e % height;
@@ -102,7 +117,7 @@ export const CounterTimeLines = () => {
                 }
 
                 setNumber((prev) => prev - 1);
-
+                audio.play();
                 currentTickFrontID.current = Number(getTickID);
                 currentTickBackID.current = null;
               } else {
@@ -111,7 +126,7 @@ export const CounterTimeLines = () => {
                 }
 
                 setNumber((prev) => prev + 1);
-
+                audio.play();
                 currentTickBackID.current = Number(getTickID);
                 currentTickFrontID.current = null;
               }
