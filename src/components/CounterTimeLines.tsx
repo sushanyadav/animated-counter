@@ -10,7 +10,8 @@ import {
 import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 
 export const CounterTimeLines = () => {
-  const prevLayer = useRef<number | null>(null);
+  const prevLayer1 = useRef<number | null>(null);
+  const prevLayer2 = useRef<number | null>(null);
 
   const { width = 0, height = 0 } = useWindowSize();
   const [scope, animate] = useAnimate();
@@ -46,8 +47,7 @@ export const CounterTimeLines = () => {
     >
       <Indicator />
       <motion.div
-        dragMomentum={false}
-        // dragTransition={{ timeConstant: 100, power: 0.01 }}
+        dragTransition={{ timeConstant: 100, power: 0.01 }}
         drag={isMobile ? "x" : "y"}
         whileDrag={{
           cursor: "grabbing",
@@ -97,17 +97,14 @@ export const CounterTimeLines = () => {
               const valToCheck = Math.ceil(layerToCheck);
 
               if (velocityToCheck > 0) {
-                if (prevLayer.current !== valToCheck) {
+                if (prevLayer1.current !== valToCheck) {
                   setNumber((prev) => prev - 1);
-                  prevLayer.current = valToCheck;
+                  prevLayer1.current = valToCheck;
                 }
               } else {
-                if (
-                  prevLayer.current !== valToCheck ||
-                  prevLayer.current + 1 === valToCheck
-                ) {
+                if (prevLayer2.current !== valToCheck) {
                   setNumber((prev) => prev + 1);
-                  prevLayer.current = valToCheck;
+                  prevLayer2.current = valToCheck;
                 }
               }
 
@@ -140,14 +137,14 @@ const Indicator = () => {
         id="indicator"
       ></motion.div>
 
-      <div
+      <motion.div
         className={cn(
           "absolute sm:ml-6 sm:top-1/2 left-1/2 bottom-4 sm:bottom-auto sm:left-auto rounded-full pointer-events-none transition-all",
           { "w-0.5 h-[44px]": isMobile },
           { "w-[44px] h-px": !isMobile }
         )}
         id="indicator-inner"
-      ></div>
+      ></motion.div>
     </>
   );
 };
