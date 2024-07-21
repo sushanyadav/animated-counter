@@ -63,6 +63,7 @@ const useAnimatedCounterValues = () => {
     isIncreasing,
     isDecreasing,
     isNegative,
+    setNumber,
   };
 };
 

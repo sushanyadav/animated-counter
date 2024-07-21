@@ -1,9 +1,9 @@
 "use client";
 
 import AnimatedCounterProvider from "@/provider/AnimatedCounterProvider";
-import { Counter } from "@/components/Counter";
-import { CounterTimeLine } from "@/components/CounterTimeLine";
+import { CounterTimeLines } from "@/components/CounterTimeLines";
 import { useScrollLock } from "usehooks-ts";
+import { Counter } from "@/components/Counter";
 
 export default function Home() {
   useScrollLock();
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="min-h-screen grid place-items-center">
       <AnimatedCounterProvider>
-        <CounterTimeLine />
+        <CounterTimeLines />
         <Counter />
       </AnimatedCounterProvider>
     </main>

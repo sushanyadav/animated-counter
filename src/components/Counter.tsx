@@ -24,7 +24,7 @@ export const Counter = () => {
         height: `${height + padding}px`,
       }}
       className={cn(
-        "flex overflow-hidden font-mono w-fit mx-auto items-center justify-center leading-text-white",
+        "flex overflow-hidden text-white font-mono w-fit mx-auto items-center justify-center leading-text-white",
         "[mask-image:linear-gradient(to_bottom,_transparent,_black_30%,_black_calc(100%_-_30%),_transparent)]",
         "[-webkit-mask-image:linear-gradient(to_bottom,_transparent,_black_30%,_black_calc(100%_-_30%),_transparent)]"
       )}

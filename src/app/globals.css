@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --body-bg: rgba(247, 247, 247, 1);
+  --body-bg: linear-gradient(180deg, #100b0b 48%, #002219 100%), #070c0b;
   --color: rgba(0, 0, 0, 1);
 }
 
@@ -14,7 +14,7 @@
 
 body {
   color: var(--color);
-  background-color: var(--body-bg);
+  background: var(--body-bg);
 }
 
 @layer utilities {
