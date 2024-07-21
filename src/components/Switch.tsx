@@ -1,5 +1,6 @@
 import * as RadixSwitch from "@radix-ui/react-switch";
 import { ComponentPropsWithoutRef } from "react";
+
 import { cn } from "@/functions/cn";
 
 interface SwitchProps

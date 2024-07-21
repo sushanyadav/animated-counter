@@ -20,8 +20,8 @@ export const Digit = ({ mv, height, number }: NumberProps) => {
 
   return (
     <motion.span
-      style={{ y }}
       className={`absolute select-none number inset-0 flex items-center justify-center`}
+      style={{ y }}
     >
       {number}
     </motion.span>

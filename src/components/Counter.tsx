@@ -1,8 +1,10 @@
+import { motion } from "framer-motion";
+
+import { DigitColumn } from "./DigitColumn";
+
 import { cn } from "@/functions/cn";
 import { isNumeric } from "@/functions/isNumeric";
-import { motion } from "framer-motion";
 import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
-import { DigitColumn } from "./DigitColumn";
 
 export const Counter = () => {
   const { numArray, fontSize, height, padding } = useAnimatedCounter();
@@ -17,17 +19,17 @@ export const Counter = () => {
 
   return (
     <motion.span
-      layout="position"
-      transition={transition}
-      style={{
-        fontSize: `${fontSize}px`,
-        height: `${height + padding}px`,
-      }}
       className={cn(
         "flex overflow-hidden text-white font-mono w-fit mx-auto items-center justify-center leading-text-white",
         "[mask-image:linear-gradient(to_bottom,_transparent,_black_30%,_black_calc(100%_-_30%),_transparent)]",
         "[-webkit-mask-image:linear-gradient(to_bottom,_transparent,_black_30%,_black_calc(100%_-_30%),_transparent)]"
       )}
+      layout="position"
+      style={{
+        fontSize: `${fontSize}px`,
+        height: `${height + padding}px`,
+      }}
+      transition={transition}
     >
       {numArray.map((_digit, index) => {
         // check if the digit is not a number

@@ -1,5 +1,3 @@
-import { makeFriendly } from "@/functions/makeFriendly";
-import { usePrevious } from "@/hooks/usePrevious";
 import {
   PropsWithChildren,
   createContext,
@@ -9,9 +7,10 @@ import {
 } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
-interface AnimatedCounterProviderProps {}
+import { makeFriendly } from "@/functions/makeFriendly";
+import { usePrevious } from "@/hooks/usePrevious";
 
-export const randomNumberList = [5, 124, 326, 429];
+interface AnimatedCounterProviderProps {}
 
 // For inferring return type
 const useAnimatedCounterValues = () => {
@@ -20,7 +19,6 @@ const useAnimatedCounterValues = () => {
   const [isTyping, setTyping] = useState(false);
   const [isCollapsed, setCollapsed] = useState(true);
   const [isRandomized, setRandomized] = useState(false);
-  const [currentRandomNumber, setCurrentRandomNumber] = useState(1);
 
   useEffect(() => {
     const changeVal = (e: WheelEvent) => {
@@ -77,8 +75,6 @@ const useAnimatedCounterValues = () => {
     isFormatted,
     setRandomized,
     isRandomized,
-    currentRandomNumber,
-    setCurrentRandomNumber,
   };
 };
 

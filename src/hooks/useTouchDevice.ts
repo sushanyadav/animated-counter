@@ -1,5 +1,6 @@
-import { isBrowser } from "@/functions/isBrowser";
 import { useState, useEffect, useCallback } from "react";
+
+import { isBrowser } from "@/functions/isBrowser";
 
 const hoverQuery = "(hover: none) and ((pointer: coarse) or (pointer: none))";
 

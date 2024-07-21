@@ -1,12 +1,13 @@
 "use client";
 
+import { useScrollLock } from "usehooks-ts";
+
+import { ConfigureNumbers } from "@/components/ConfigureNumbers";
+import { Counter } from "@/components/Counter";
+import { CounterTimeLines } from "@/components/CounterTimeLines";
 import AnimatedCounterProvider, {
   useAnimatedCounter,
 } from "@/provider/AnimatedCounterProvider";
-import { CounterTimeLines } from "@/components/CounterTimeLines";
-import { useScrollLock } from "usehooks-ts";
-import { Counter } from "@/components/Counter";
-import { ConfigureNumbers } from "@/components/ConfigureNumbers";
 
 export default function Home() {
   useScrollLock();

@@ -1,12 +1,13 @@
-import { cn } from "@/functions/cn";
-import { memo, useEffect, useMemo, useRef, useState } from "react";
-import { useMediaQuery, useWindowSize } from "usehooks-ts";
 import {
   motion,
   useAnimate,
   useMotionValue,
   useMotionValueEvent,
 } from "framer-motion";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { useMediaQuery, useWindowSize } from "usehooks-ts";
+
+import { cn } from "@/functions/cn";
 import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 
 const useAudio = (src: string, { volume = 1, playbackRate = 1 }) => {
@@ -62,34 +63,12 @@ export const CounterTimeLines = () => {
     >
       <Indicator />
       <motion.div
-        dragTransition={{ timeConstant: 100, power: 0.01 }}
+        className="w-[199vw] sm:w-auto sm:h-full cursor-grab sm:pl-6 flex sm:block"
         drag={isMobile ? "x" : "y"}
+        dragTransition={{ timeConstant: 100, power: 0.01 }}
+        style={isMobile ? { x, touchAction: "none" } : { y }}
         whileDrag={{
           cursor: "grabbing",
-        }}
-        onDragEnd={() => {
-          animate(
-            "#indicator",
-            {
-              scale: 1,
-            },
-            {
-              duration: 0.1,
-              ease: "backOut",
-            }
-          );
-        }}
-        onDragStart={() => {
-          animate(
-            "#indicator",
-            {
-              scale: isMobile ? 1.3 : 1.5,
-            },
-            {
-              duration: 0.1,
-              ease: "backIn",
-            }
-          );
         }}
         onDrag={(e: PointerEvent, info) => {
           const velocityToCheck = isMobile ? info.velocity.x : info.velocity.y;
@@ -148,8 +127,30 @@ export const CounterTimeLines = () => {
             }
           });
         }}
-        style={isMobile ? { x, touchAction: "none" } : { y }}
-        className="w-[199vw] sm:w-auto sm:h-full cursor-grab sm:pl-6 flex sm:block"
+        onDragEnd={() => {
+          animate(
+            "#indicator",
+            {
+              scale: 1,
+            },
+            {
+              duration: 0.1,
+              ease: "backOut",
+            }
+          );
+        }}
+        onDragStart={() => {
+          animate(
+            "#indicator",
+            {
+              scale: isMobile ? 1.3 : 1.5,
+            },
+            {
+              duration: 0.1,
+              ease: "backIn",
+            }
+          );
+        }}
       >
         <CounterTimeLine />
         <CounterTimeLine />
@@ -164,13 +165,13 @@ const Indicator = () => {
   return (
     <>
       <motion.div
-        style={isMobile ? { originY: "bottom" } : { originX: "left" }}
         className={cn(
           "bg-[#FFF833] z-40 absolute sm:ml-6 sm:top-1/2 sm:-translate-y-0.5 left-1/2 bottom-4 sm:bottom-auto sm:left-auto rounded-full pointer-events-none transition-all",
           { "w-0.5 h-[28px]": isMobile },
           { "w-[44px] h-0.5": !isMobile }
         )}
         id="indicator"
+        style={isMobile ? { originY: "bottom" } : { originX: "left" }}
       ></motion.div>
 
       <motion.div
@@ -211,21 +212,21 @@ export const CounterTimeLine = memo(() => {
       )}
     >
       <div
+        ref={ref}
         className={cn("", {
           "h-full w-px": !isMobile,
           "h-px w-full": isMobile,
         })}
-        ref={ref}
       >
         {Array.from({ length: numberOfLines }).map((_, i) => (
           <div
             key={i}
-            id={`tick-${i}`}
             className={cn(
               "bg-[#113f36] ticks",
               { "w-[10px] h-[0.5px] absolute left-0": !isMobile },
               { "w-[0.5px] h-[10px] absolute left-0": isMobile }
             )}
+            id={`tick-${i}`}
             style={
               !isMobile
                 ? { top: `calc(${(i + 1) * GAP}px)` }

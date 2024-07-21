@@ -1,7 +1,9 @@
 import { useAnimate, useSpring } from "framer-motion";
 import { useEffect } from "react";
-import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
+
 import { Digit } from "./Digit";
+
+import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 
 // TO PREVENT BLUR ANIMATION ON WINDOW LOAD
 let initialAnimate = false;
@@ -77,11 +79,11 @@ export const DigitColumn = ({
   return (
     <div
       ref={scope}
-      style={{ height }}
       className="relative w-[1ch] tabular-nums"
+      style={{ height }}
     >
       {Array.from({ length: 10 }, (_, i) => i).map((i) => (
-        <Digit height={height} key={i} mv={animatedValue} number={i} />
+        <Digit key={i} height={height} mv={animatedValue} number={i} />
       ))}
     </div>
   );
