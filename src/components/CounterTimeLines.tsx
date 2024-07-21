@@ -10,8 +10,8 @@ import {
 import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 
 export const CounterTimeLines = () => {
-  const prevLayer1 = useRef<number | null>(null);
-  const prevLayer2 = useRef<number | null>(null);
+  const currentTickFrontID = useRef<number | null>(null);
+  const currentTickBackID = useRef<number | null>(null);
 
   const { width = 0, height = 0 } = useWindowSize();
   const [scope, animate] = useAnimate();
@@ -78,7 +78,6 @@ export const CounterTimeLines = () => {
         }}
         onDrag={(e: PointerEvent, info) => {
           const velocityToCheck = isMobile ? info.velocity.x : info.velocity.y;
-          const layerToCheck = isMobile ? info.offset.x : info.offset.y;
 
           const ticks = document.querySelectorAll(".ticks");
           const indicator = document.getElementById("indicator-inner");
@@ -94,18 +93,27 @@ export const CounterTimeLines = () => {
               i?.left! < t.right! &&
               i?.right! > t.left!
             ) {
-              const valToCheck = Math.ceil(layerToCheck);
+              // check if tick is already active
+              const getTickID = tick.id.split("-")[1];
 
               if (velocityToCheck > 0) {
-                if (prevLayer1.current !== valToCheck) {
-                  setNumber((prev) => prev - 1);
-                  prevLayer1.current = valToCheck;
+                if (currentTickFrontID.current === Number(getTickID)) {
+                  return;
                 }
+
+                setNumber((prev) => prev - 1);
+
+                currentTickFrontID.current = Number(getTickID);
+                currentTickBackID.current = null;
               } else {
-                if (prevLayer2.current !== valToCheck) {
-                  setNumber((prev) => prev + 1);
-                  prevLayer2.current = valToCheck;
+                if (currentTickBackID.current === Number(getTickID)) {
+                  return;
                 }
+
+                setNumber((prev) => prev + 1);
+
+                currentTickBackID.current = Number(getTickID);
+                currentTickFrontID.current = null;
               }
 
               return;
@@ -184,6 +192,7 @@ export const CounterTimeLine = memo(() => {
         {Array.from({ length: numberOfLines }).map((_, i) => (
           <div
             key={i}
+            id={`tick-${i}`}
             className={cn(
               "bg-[#113f36] ticks",
               { "w-[10px] h-[0.5px] absolute left-0": !isMobile },
