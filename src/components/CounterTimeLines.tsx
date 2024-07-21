@@ -10,9 +10,9 @@ import {
 } from "framer-motion";
 import { useAnimatedCounter } from "@/provider/AnimatedCounterProvider";
 
-let prevLayerY = 0;
-
 export const CounterTimeLines = () => {
+  const prevLayer = useRef<number | null>(null);
+
   const { width = 0, height = 0 } = useWindowSize();
   const [scope, animate] = useAnimate();
   const y = useMotionValue(0);
@@ -87,18 +87,18 @@ export const CounterTimeLines = () => {
           if (velocityToCheck > 0) {
             if (
               Math.abs(layerToCheck) % 8 === 0 &&
-              prevLayerY !== Math.abs(layerToCheck)
+              prevLayer.current !== Math.abs(layerToCheck)
             ) {
               setNumber((prev) => prev - 1);
-              prevLayerY = Math.abs(layerToCheck);
+              prevLayer.current = Math.abs(layerToCheck);
             }
           } else {
             if (
               Math.abs(layerToCheck) % 8 === 0 &&
-              prevLayerY !== Math.abs(layerToCheck)
+              prevLayer.current !== Math.abs(layerToCheck)
             ) {
               setNumber((prev) => prev + 1);
-              prevLayerY = Math.abs(layerToCheck);
+              prevLayer.current = Math.abs(layerToCheck);
             }
           }
         }}
@@ -114,8 +114,6 @@ export const CounterTimeLines = () => {
 
 const Indicator = () => {
   const { isTouchDevice } = useTouchDevice();
-
-  if (isTouchDevice === undefined && typeof window === "undefined") return null;
 
   return (
     <motion.div

@@ -79,6 +79,15 @@ export const AnimatedCounterProvider = ({
   children,
 }: PropsWithChildren<AnimatedCounterProviderProps>) => {
   const values = useAnimatedCounterValues();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <AnimatedCounterContext.Provider value={values}>
