@@ -115,9 +115,15 @@ export const CounterTimeLines = () => {
                 if (currentTickFrontID.current === Number(getTickID)) {
                   return;
                 }
+                audio.load();
+                const playPromise = audio.play();
+
+                if (playPromise !== undefined) {
+                  playPromise.then(() => {}).catch(() => {});
+                }
 
                 setNumber((prev) => prev - 1);
-                audio.play();
+
                 currentTickFrontID.current = Number(getTickID);
                 currentTickBackID.current = null;
               } else {
@@ -125,8 +131,15 @@ export const CounterTimeLines = () => {
                   return;
                 }
 
+                audio.load();
+                const playPromise = audio.play();
+
+                if (playPromise !== undefined) {
+                  playPromise.then(() => {}).catch(() => {});
+                }
+
                 setNumber((prev) => prev + 1);
-                audio.play();
+
                 currentTickBackID.current = Number(getTickID);
                 currentTickFrontID.current = null;
               }
