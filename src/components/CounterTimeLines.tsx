@@ -195,7 +195,6 @@ export const CounterTimeLine = memo(() => {
   const GAP = useMemo(() => (width > 640 ? 22 : 12), [width]);
 
   useEffect(() => {
-    if (isMobile === undefined) return;
     const numberOfLines = !isMobile
       ? Math.floor(height / GAP)
       : Math.floor(width / GAP);
@@ -203,10 +202,9 @@ export const CounterTimeLine = memo(() => {
     setNumberOfLines(numberOfLines);
   }, [height, width, isMobile, GAP]);
 
-  if (isMobile === undefined) return null;
-
   return (
     <div
+      key={`${isMobile}`}
       className={cn(
         "w-full h-[50px] sm:w-[50px] sm:pl-6 relative sm:h-full flex items-center justify-center"
       )}
