@@ -11,11 +11,16 @@ import { useMediaQuery } from "usehooks-ts";
 
 interface AnimatedCounterProviderProps {}
 
+export const randomNumberList = [5, 124, 326, 429];
+
 // For inferring return type
 const useAnimatedCounterValues = () => {
   const [number, setNumber] = useState(4291);
   const [isFormatted, setFormatted] = useState(true);
   const [isTyping, setTyping] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(true);
+  const [isRandomized, setRandomized] = useState(false);
+  const [currentRandomNumber, setCurrentRandomNumber] = useState(1);
 
   useEffect(() => {
     const changeVal = (e: WheelEvent) => {
@@ -64,6 +69,16 @@ const useAnimatedCounterValues = () => {
     isDecreasing,
     isNegative,
     setNumber,
+    number,
+    setTyping,
+    setCollapsed,
+    isCollapsed,
+    setFormatted,
+    isFormatted,
+    setRandomized,
+    isRandomized,
+    currentRandomNumber,
+    setCurrentRandomNumber,
   };
 };
 

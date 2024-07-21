@@ -122,7 +122,7 @@ export const CounterTimeLines = () => {
                   playPromise.then(() => {}).catch(() => {});
                 }
 
-                setNumber((prev) => prev - 1);
+                setNumber((prev) => Number(prev) - 1);
 
                 currentTickFrontID.current = Number(getTickID);
                 currentTickBackID.current = null;
@@ -138,7 +138,7 @@ export const CounterTimeLines = () => {
                   playPromise.then(() => {}).catch(() => {});
                 }
 
-                setNumber((prev) => prev + 1);
+                setNumber((prev) => Number(prev) + 1);
 
                 currentTickBackID.current = Number(getTickID);
                 currentTickFrontID.current = null;
@@ -167,7 +167,7 @@ const Indicator = () => {
         style={isMobile ? { originY: "bottom" } : { originX: "left" }}
         className={cn(
           "bg-[#FFF833] z-40 absolute sm:ml-6 sm:top-1/2 sm:-translate-y-0.5 left-1/2 bottom-4 sm:bottom-auto sm:left-auto rounded-full pointer-events-none transition-all",
-          { "w-0.5 h-[44px]": isMobile },
+          { "w-0.5 h-[28px]": isMobile },
           { "w-[44px] h-0.5": !isMobile }
         )}
         id="indicator"
