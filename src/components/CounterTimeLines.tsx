@@ -134,7 +134,7 @@ export const CounterTimeLine = memo(() => {
   const ref = useRef<HTMLDivElement>(null);
   const { isTouchDevice } = useTouchDevice();
 
-  const GAP = useMemo(() => (width > 640 ? 20 : 12), [width]);
+  const GAP = useMemo(() => (width > 640 ? 22 : 12), [width]);
 
   useEffect(() => {
     if (isTouchDevice === undefined) return;
@@ -175,14 +175,6 @@ export const CounterTimeLine = memo(() => {
             }
           />
         ))}
-        <div
-          className={cn(
-            "bg-[#113f36] ",
-            { "w-[10px] h-px absolute left-0": !isTouchDevice },
-            { "w-px h-[10px] absolute left-0": isTouchDevice }
-          )}
-          style={!isTouchDevice ? { bottom: `-4px` } : { right: `-4px` }}
-        />
       </div>
     </div>
   );
