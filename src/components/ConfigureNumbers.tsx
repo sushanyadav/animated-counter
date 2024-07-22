@@ -56,8 +56,8 @@ export const ConfigureNumbers = () => {
       ],
     ];
 
-    animate(sequence, { duration: 0.2 });
-  }, [animate, bounds, scope, isCollapsed]);
+    animate(sequence, { duration: 0.22 });
+  }, [animate, bounds.height, scope, isCollapsed]);
 
   return (
     <div
