@@ -32,7 +32,7 @@ export const ConfigureNumbers = () => {
         {
           height: bounds.height,
         },
-        { duration: 0.25 },
+        { duration: 0.18 },
       ],
       [
         "#collapsed-items",

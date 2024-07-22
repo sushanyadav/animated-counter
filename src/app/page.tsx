@@ -13,7 +13,7 @@ export default function Home() {
   useScrollLock();
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-[100dvh] flex flex-col">
       <AnimatedCounterProvider>
         <CounterTimeLines />
         <div className="flex items-center flex-1 select-none">

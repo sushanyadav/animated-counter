@@ -94,11 +94,13 @@ export const CounterTimeLines = () => {
                 if (currentTickFrontID.current === Number(getTickID)) {
                   return;
                 }
-                audio.load();
-                const playPromise = audio.play();
+                if (!isMobile) {
+                  audio.load();
+                  const playPromise = audio.play();
 
-                if (playPromise !== undefined) {
-                  playPromise.then(() => {}).catch(() => {});
+                  if (playPromise !== undefined) {
+                    playPromise.then(() => {}).catch(() => {});
+                  }
                 }
 
                 setNumber((prev) => Number(prev) - 1);
@@ -110,11 +112,13 @@ export const CounterTimeLines = () => {
                   return;
                 }
 
-                audio.load();
-                const playPromise = audio.play();
+                if (!isMobile) {
+                  audio.load();
+                  const playPromise = audio.play();
 
-                if (playPromise !== undefined) {
-                  playPromise.then(() => {}).catch(() => {});
+                  if (playPromise !== undefined) {
+                    playPromise.then(() => {}).catch(() => {});
+                  }
                 }
 
                 setNumber((prev) => Number(prev) + 1);
