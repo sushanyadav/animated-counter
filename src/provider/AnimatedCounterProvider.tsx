@@ -18,6 +18,7 @@ const useAnimatedCounterValues = () => {
   const [isFormatted, setFormatted] = useState(true);
   const [isTyping, setTyping] = useState(false);
   const [isRandomized, setRandomized] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(true);
 
   useEffect(() => {
     const changeVal = (e: WheelEvent) => {
@@ -36,7 +37,7 @@ const useAnimatedCounterValues = () => {
 
   const isMobile = useMediaQuery("(max-width: 640px)");
 
-  const fontSize = isMobile ? 48 : 128;
+  const fontSize = isMobile ? 64 : 128;
   const padding = isMobile ? 12 : 16;
   const height = fontSize + padding;
 
@@ -72,6 +73,8 @@ const useAnimatedCounterValues = () => {
     isFormatted,
     setRandomized,
     isRandomized,
+    isCollapsed,
+    setCollapsed,
   };
 };
 

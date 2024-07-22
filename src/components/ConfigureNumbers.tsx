@@ -17,13 +17,13 @@ export const ConfigureNumbers = () => {
     setTyping,
     setRandomized,
     isRandomized,
+    isCollapsed,
+    setCollapsed,
   } = useAnimatedCounter();
 
   const [scope, animate] = useAnimate();
 
   const [elementRef, bounds] = useMeasure();
-
-  const [isCollapsed, setCollapsed] = useState(true);
 
   useEffect(() => {
     const sequence: AnimationSequence = [
@@ -62,9 +62,13 @@ export const ConfigureNumbers = () => {
   return (
     <div
       ref={scope}
-      className="mx-auto overflow-hidden relative z-20 mb-16 sm:mb-8 bg-[rgba(255,_255,_255,_1)] p-1 rounded-3xl min-w-[95%] sm:min-w-[392px]"
+      className="mx-auto fixed bottom-0 inset-x-0 overflow-hidden z-20 mb-16 sm:mb-8 bg-[rgba(255,_255,_255,_1)] rounded-3xl max-w-[95%] sm:max-w-[392px]"
     >
-      <div ref={elementRef} className="rounded-[inherit]" id="control-wrapper">
+      <div
+        ref={elementRef}
+        className="p-1 rounded-[inherit]"
+        id="control-wrapper"
+      >
         <div
           className="px-5 py-3 flex items-center gap-2 w-full rounded-t-[inherit]"
           role="button"
@@ -182,7 +186,7 @@ export const ConfigureNumbers = () => {
             />
           </motion.div>
         )}
-        <div className="h-[56px]" id="button-wrapper">
+        <div id="button-wrapper">
           <div className="rounded-t-lg rounded-b-[20px] bg-[#F3F3F3] flex font-medium items-center text-sm leading-5 tracking-[-0.20px]">
             <motion.button
               className="p-3 flex-1 flex items-center justify-center gap-2.5 rounded-bl-[inherit]"

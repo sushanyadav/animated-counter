@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useScrollLock } from "usehooks-ts";
 
 import { ConfigureNumbers } from "@/components/ConfigureNumbers";
@@ -16,11 +17,24 @@ export default function Home() {
     <main className="min-h-[100dvh] flex flex-col">
       <AnimatedCounterProvider>
         <CounterTimeLines />
-        <div className="flex items-center flex-1 select-none">
-          <Counter />
-        </div>
+        <CounterWrapper />
         <ConfigureNumbers />
       </AnimatedCounterProvider>
     </main>
   );
 }
+
+const CounterWrapper = () => {
+  const { isCollapsed } = useAnimatedCounter();
+
+  return (
+    <motion.div
+      animate={{
+        y: isCollapsed ? -40 : -60,
+      }}
+      className="flex items-center flex-1 select-none"
+    >
+      <Counter />
+    </motion.div>
+  );
+};
