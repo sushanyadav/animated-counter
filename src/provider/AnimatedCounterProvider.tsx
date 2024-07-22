@@ -37,7 +37,7 @@ const useAnimatedCounterValues = () => {
 
   const isMobile = useMediaQuery("(max-width: 640px)");
 
-  const fontSize = isMobile ? 64 : 128;
+  const fontSize = isMobile ? 56 : 128;
   const padding = isMobile ? 12 : 16;
   const height = fontSize + padding;
 
