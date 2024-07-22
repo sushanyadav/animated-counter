@@ -1,5 +1,5 @@
 import { AnimationSequence, motion, useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useMeasure from "react-use-measure";
 
 import { Switch } from "./Switch";
@@ -12,10 +12,8 @@ export const ConfigureNumbers = () => {
   const {
     number,
     setNumber,
-    isCollapsed,
     isFormatted,
     setFormatted,
-    setCollapsed,
     setTyping,
     setRandomized,
     isRandomized,
@@ -25,6 +23,8 @@ export const ConfigureNumbers = () => {
 
   const [elementRef, bounds] = useMeasure();
 
+  const [isCollapsed, setCollapsed] = useState(true);
+
   useEffect(() => {
     const sequence: AnimationSequence = [
       [
@@ -32,20 +32,31 @@ export const ConfigureNumbers = () => {
         {
           height: bounds.height,
         },
-        { duration: 0.18 },
+        { ease: [0.25, 1, 0.5, 1] },
       ],
       [
         "#collapsed-items",
         {
           opacity: 1,
+          scale: 1,
         },
         {
           at: "-0.2",
+          ease: [0.25, 1, 0.5, 1],
+        },
+      ],
+      [
+        "#button-wrapper",
+        {
+          opacity: isCollapsed ? [0, 1] : 1,
+        },
+        {
+          at: "-0.18",
         },
       ],
     ];
 
-    animate(sequence);
+    animate(sequence, { duration: 0.2 });
   }, [animate, bounds, scope, isCollapsed]);
 
   return (
@@ -118,7 +129,7 @@ export const ConfigureNumbers = () => {
           <motion.div
             className="p-5 border-t border-black/[0.04] space-y-4"
             id="collapsed-items"
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0.97 }}
           >
             <div>
               <label className="flex flex-col gap-2 text-sm font-medium">

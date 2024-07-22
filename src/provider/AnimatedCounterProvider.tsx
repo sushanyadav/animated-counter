@@ -17,7 +17,6 @@ const useAnimatedCounterValues = () => {
   const [number, setNumber] = useState(4291);
   const [isFormatted, setFormatted] = useState(true);
   const [isTyping, setTyping] = useState(false);
-  const [isCollapsed, setCollapsed] = useState(true);
   const [isRandomized, setRandomized] = useState(false);
 
   useEffect(() => {
@@ -69,8 +68,6 @@ const useAnimatedCounterValues = () => {
     setNumber,
     number,
     setTyping,
-    setCollapsed,
-    isCollapsed,
     setFormatted,
     isFormatted,
     setRandomized,
