@@ -62,7 +62,7 @@ export const ConfigureNumbers = () => {
   return (
     <div
       ref={scope}
-      className="mx-auto fixed bottom-0 inset-x-0 overflow-hidden z-20 mb-16 sm:mb-8 bg-[rgba(255,_255,_255,_1)] rounded-3xl max-w-[95%] sm:max-w-[392px]"
+      className="mx-auto fixed bottom-0 inset-x-0 overflow-hidden mb-16 sm:mb-8 bg-[rgba(255,_255,_255,_1)] rounded-3xl max-w-[95%] sm:max-w-[392px]"
     >
       <div
         ref={elementRef}

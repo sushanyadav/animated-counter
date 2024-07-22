@@ -30,9 +30,9 @@ const CounterWrapper = () => {
   return (
     <motion.div
       animate={{
-        y: isCollapsed ? -40 : -60,
+        y: isCollapsed ? -40 : -65,
       }}
-      className="flex items-center flex-1 select-none"
+      className="flex w-fit mx-auto items-center flex-1 select-none"
     >
       <Counter />
     </motion.div>
