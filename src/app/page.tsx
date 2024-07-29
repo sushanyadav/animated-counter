@@ -33,6 +33,7 @@ const CounterWrapper = () => {
         y: isCollapsed ? -40 : -75,
       }}
       className="flex w-fit mx-auto items-center flex-1 select-none"
+      initial={false}
     >
       <Counter />
     </motion.div>
