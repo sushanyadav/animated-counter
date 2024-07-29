@@ -14,13 +14,13 @@ export default function Home() {
   useScrollLock();
 
   return (
-    <main className="min-h-[100dvh] flex flex-col">
-      <AnimatedCounterProvider>
+    <AnimatedCounterProvider>
+      <main className="min-h-[100dvh] flex flex-col">
         <CounterTimeLines />
         <CounterWrapper />
         <ConfigureNumbers />
-      </AnimatedCounterProvider>
-    </main>
+      </main>
+    </AnimatedCounterProvider>
   );
 }
 
